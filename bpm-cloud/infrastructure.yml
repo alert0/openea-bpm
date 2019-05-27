@@ -1,0 +1,73 @@
+version: '3'
+networks:
+  net-eap:
+
+services:
+  consul-server1:
+    image: consul
+    container_name: consul-server1
+    command: agent -server -bootstrap-expect=3 -node=consul-server1 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1
+    networks:
+      - net-eap
+
+  consul-server2:
+    image: consul
+    container_name: consul-server2
+    command: agent -server -retry-join=consul-server1 -node=consul-server2 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1
+    depends_on:
+      - consul-server1
+    networks:
+      - net-eap
+
+  consul-server3:
+    image: consul
+    container_name: consul-server3
+    command: agent -server -retry-join=consul-server1 -node=consul-server3 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1
+    depends_on:
+      - consul-server1
+    networks:
+      - net-eap
+
+  consul-ui:
+    image: consul
+    container_name: consul-ui
+    command: agent -retry-join=consul-server1 -node=consul-ui -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1 -ui
+    ports:
+      - 8500:8500
+    depends_on:
+      - consul-server2
+      - consul-server3
+    networks:
+      - net-eap
+
+  bpm-mysql:
+    image: mysql/mysql-server:5.7
+    container_name: bpm-mysql
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: eap_bpm
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --max_allowed_packet=128M
+      --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    volumes:
+      - bpm-mysql-data:/var/lib/mysql
+    networks:
+      - net-eap
+
+  bpm-redis:
+    image: redis:5
+    container_name: bpm-redis
+    volumes:
+      - bpm-redis-data:/data
+  networks:
+    - net-eap
+
+volumes:
+  bpm-mysql-data:
+  bpm-redis-data:

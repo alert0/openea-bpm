@@ -37,6 +37,7 @@ services:
       - bpm-mysql-data:/var/lib/mysql
   bpm-redis:
     image: redis:5
+    container_name: bpm-redis
     volumes:
       - bpm-redis-data:/data
 volumes:
