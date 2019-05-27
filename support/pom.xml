@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.openbpm.bpm</groupId>
+        <artifactId>bpm-pom</artifactId>
+        <version>3.2.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>support</artifactId>
+    <packaging>pom</packaging>
+    <name>support</name>
+    <description>bpm support, 构建platform</description>
+
+    <modules>
+        <module>base</module>
+        <module>auth</module>
+        <module>org</module>
+        <module>sys</module>
+    </modules>
+
+    <properties>
+        <support.version>3.2.0</support.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>auth</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>oauth2</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+-->
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>org-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>org-core-default</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>sys-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>sys-core</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>sys-rest</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-core</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-db</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-rest</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

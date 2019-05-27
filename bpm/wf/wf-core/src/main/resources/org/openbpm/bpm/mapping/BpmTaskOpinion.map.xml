@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.openbpm.bpm.core.dao.BpmTaskOpinionDao">
+	<resultMap id="BpmTaskOpinion" type="org.openbpm.bpm.core.model.BpmTaskOpinion">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
+		<result property="supInstId" column="sup_inst_id_" jdbcType="VARCHAR"/>
+		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
+		<result property="taskKey" column="task_key_" jdbcType="VARCHAR"/>
+		<result property="taskName" column="task_name_" jdbcType="VARCHAR"/>
+		<result property="token" column="token_" jdbcType="VARCHAR"/>
+		<result property="assignInfo" column="assign_info_" jdbcType="VARCHAR"/>
+		<result property="approver" column="approver_" jdbcType="VARCHAR"/>
+		<result property="approverName" column="approver_name_" jdbcType="VARCHAR"/>
+		<result property="approveTime" column="approve_time_" jdbcType="TIMESTAMP"/>
+		<result property="opinion" column="opinion_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="formId" column="form_id_" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="durMs" column="dur_ms_" jdbcType="NUMERIC"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="org.openbpm.bpm.core.model.BpmTaskOpinion">
+		INSERT INTO bpm_task_opinion
+		(id_,inst_id_,sup_inst_id_,task_id_,task_key_,task_name_,token_,assign_info_,approver_,approver_name_,approve_time_,opinion_,status_,form_id_,create_by_,create_time_,dur_ms_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{instId,jdbcType=VARCHAR}, #{supInstId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{taskKey,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{assignInfo,jdbcType=VARCHAR}, #{approver,jdbcType=VARCHAR}, #{approverName,jdbcType=VARCHAR}, #{approveTime,jdbcType=TIMESTAMP}, #{opinion,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{formId,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{durMs,jdbcType=NUMERIC})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmTaskOpinion">
+		SELECT * FROM bpm_task_opinion 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmTaskOpinion">
+		SELECT * FROM bpm_task_opinion
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="org.openbpm.bpm.core.model.BpmTaskOpinion">
+		UPDATE bpm_task_opinion SET
+		inst_id_=#{instId,jdbcType=VARCHAR},
+		sup_inst_id_=#{supInstId,jdbcType=VARCHAR},
+		task_id_=#{taskId,jdbcType=VARCHAR},
+		task_key_=#{taskKey,jdbcType=VARCHAR},
+		task_name_=#{taskName,jdbcType=VARCHAR},
+		token_=#{token,jdbcType=VARCHAR},
+		assign_info_=#{assignInfo,jdbcType=VARCHAR},
+		approver_=#{approver,jdbcType=VARCHAR},
+		approver_name_=#{approverName,jdbcType=VARCHAR},
+		approve_time_=#{approveTime,jdbcType=TIMESTAMP},
+		opinion_=#{opinion,jdbcType=VARCHAR},
+		status_=#{status,jdbcType=VARCHAR},
+		form_id_=#{formId,jdbcType=VARCHAR},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		dur_ms_=#{durMs,jdbcType=NUMERIC}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_task_opinion 
+		WHERE
+		id_=#{id}
+	</delete>
+	
+	<delete id="removeByInstId" parameterType="java.lang.String">
+		DELETE FROM bpm_task_opinion 
+		WHERE
+		inst_id_=#{instId}
+	</delete>
+	
+	<select id="getByTaskId"   parameterType="java.lang.String" resultMap="BpmTaskOpinion">
+		SELECT * FROM bpm_task_opinion 
+		WHERE 
+		task_id_=#{taskId}
+	</select>
+	
+	<select id="getByInstAndNode"   parameterType="java.lang.String" resultMap="BpmTaskOpinion">
+		SELECT * FROM bpm_task_opinion 
+		WHERE 
+		inst_id_=#{instId}
+		<if test="nodeId!=null">
+			AND task_key_ = #{nodeId}
+		</if>
+		<if test="token!=null">
+			AND token_ = #{token}
+		</if>
+		 ORDER BY case when approve_time_ is null then 1 else 0 end asc ,create_time_
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,318 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.openbpm.bpm</groupId>
+        <artifactId>bpm-pom</artifactId>
+        <version>3.2.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <!-- 独立维护wf版本 -->
+    <version>3.2.1</version>
+    <artifactId>wf</artifactId>
+    <packaging>pom</packaging>
+    <description>工作流根目录</description>
+
+    <modules>
+        <module>wf-api</module>
+        <module>wf-act</module>
+        <module>wf-core</module>
+        <module>wf-plugin</module>
+        <module>wf-rest</module>
+        <module>wf-autoconf</module>
+
+    </modules>
+    <!-- 定义参数 -->
+    <properties>
+        <json-lib.version>2.4</json-lib.version>
+        <com.jayway.jsonpath>0.9.1</com.jayway.jsonpath>
+        <activiti.version>5.22.0</activiti.version>
+        <javax.persistence>1.0.2</javax.persistence>
+        <batik.version>1.7</batik.version>
+
+        <support.version>3.2.0</support.version>
+        <bpm.version>3.2.0</bpm.version>
+        <wf.version>3.2.1</wf.version>
+    </properties>
+
+    <!-- 定义全局的依赖，供子模块调用 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${com.jayway.jsonpath}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-engine</artifactId>
+                <version>${activiti.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring</artifactId>
+                <version>${activiti.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-bpmn-converter</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-bpmn-model</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-process-validation</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.3</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>${javax.persistence}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>net.minidev</groupId>
+                <artifactId>json-smart</artifactId>
+                <version>1.2</version>
+            </dependency>
+
+            <!-- Activiti Modeler -->
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-parser</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-transcoder</artifactId>
+                <version>${batik.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-bridge</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-codec</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-css</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-svg-dom</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-svggen</artifactId>
+                <version>${batik.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>bus-api</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>form-api</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>wf-api</artifactId>
+                <version>${wf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>wf-core</artifactId>
+                <version>${wf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>wf-act</artifactId>
+                <version>${wf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>wf-rest</artifactId>
+                <version>${wf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>wf-plugin</artifactId>
+                <version>${wf.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>org-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>sys-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-core</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-db</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-rest</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.github.wvengen</groupId>
+                    <artifactId>proguard-maven-plugin</artifactId>
+                    <version>2.0.11</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>proguard</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- 是否将生成的PG文件安装部署-->
+                        <attach>true</attach>
+                        <!-- 是否混淆-->
+                        <obfuscate>true</obfuscate>
+                        <!-- 指定生成文件分类 -->
+                        <attachArtifactClassifier>pg</attachArtifactClassifier>
+                        <options>
+                            <!-- JDK目标版本1.7-->
+                            <option>-target 1.8</option>
+                            <!-- 不做收缩（删除注释、未被引用代码）-->
+                            <option>-dontshrink</option>
+                            <!-- 不做优化（变更代码实现逻辑）-->
+                            <option>-dontoptimize</option>
+                            <option>-keepdirectories</option>
+                            <!-- 不路过非公用类文件及成员-->
+                            <option>-dontskipnonpubliclibraryclasses</option>
+                            <option>-dontskipnonpubliclibraryclassmembers</option>
+                            <!-- 优化时允许访问并修改有修饰符的类和类的成员 -->
+                            <option>-allowaccessmodification</option>
+                            <!-- 确定统一的混淆类的成员名称来增加混淆-->
+                            <option>-useuniqueclassmembernames</option>
+                            <!-- 不混淆所有包名，本人测试混淆后WEB项目问题实在太多，毕竟Spring配置中有大量固定写法的包名-->
+                            <option>-keeppackagenames</option>
+                            <!-- 不混淆所有特殊的类-->
+                            <option>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,LocalVariable*Table,*Annotation*,Synthetic,EnclosingMethod</option>
+                            <!-- 不混淆所有的set/get方法 -->
+                            <option>-keepclassmembers public class * {void set*(***);*** get*();}</option>
+
+
+                            <!-- 不混淆所有的接口-->
+                            <option>-keep interface **.*{ *;}</option>
+                            <!-- 算了所有类都不改名字-->
+                            <option>-keep class **.* </option>
+
+
+                            <!-- 不混淆所有枚举，序列化类-->
+                            <option>-keep enum **.*{ *;}</option>
+                            <!-- 		序列化类 <option>-keep public class * implements java.io.Serializable{public protected private *;}</option> -->
+
+                            <!-- 不混淆job包下的所有类名，且类中的方法也不混淆-->
+                            <option>-keep class org.openbpm.**.job.** { &lt;methods&gt;; }</option>
+
+                            <!-- 抽象类的方法、与子类不同包，保持可用-->
+                            <option>-keep class org.openbpm.bpm.engine.plugin.context.* { &lt;methods&gt;; }</option>
+                            <option>-keepclasseswithmembernames class org.openbpm.bpm.engine.plugin.runtime.abstact.* {
+                                &lt;methods&gt;; }</option>
+                            <option>-keep class org.openbpm.bpm.engine.plugin.session.* { &lt;methods&gt;; }</option>
+                            <option>-keep class org.openbpm.bpm.engine.plugin.factory.* { &lt;methods&gt;; }</option>
+                            <option>-keep class org.openbpm.bpm.act.img.* { &lt;methods&gt;; }</option>
+                            <option>-keep class org.openbpm.bpm.plugin.usercalc.util.UserCalcPreview { &lt;methods&gt;;
+                                }</option>
+
+                            <!-- Dao 层与mapper对应。这里不混淆-->
+                            <option>-keep class org.openbpm.*.*.dao.**</option>
+
+                            <option>-keep class org.openbpm.**.ActivitiDefCache { &lt;methods&gt;; }</option>
+                        </options>
+                        <outjar>${project.build.finalName}-pg.jar</outjar>
+                        <!-- 添加依赖，这里你可以按你的需要修改，这里测试只需要一个JRE的Runtime包就行了 -->
+                        <libs>
+                            <lib>${java.home}/lib/rt.jar</lib>
+                            <lib>${java.home}/lib/jsse.jar</lib>
+                        </libs>
+                        <!-- 加载文件的过滤器
+                        <inFilter>\*</inFilter>-->
+                        <!-- 要处理的jar-->
+
+                        <injar>${project.build.finalName}.jar</injar>
+                        <outjar>${project.build.finalName}-small.jar</outjar>
+                        <!-- 输出目录-->
+                        <outputDirectory>${project.build.directory}</outputDirectory>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sf.proguard</groupId>
+                            <artifactId>proguard-base</artifactId>
+                            <version>5.3.3</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+
+        </pluginManagement>
+    </build>
+
+
+</project>

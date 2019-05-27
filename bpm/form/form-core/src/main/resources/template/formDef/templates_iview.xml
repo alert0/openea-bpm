@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+	<!-- pc 端 iview 默认的所有模板  -->
+
+	<template key="iviewFormOverallArrangementMainTemplate" name="iview布局设计-主表模板" desc="当业务对象配置过 布局设计后、会使用该模板-主表" type="mainFormOverallArrangement" dir="pc_iview"/>
+	<template key="iviewFormOverallArrangementSubTemplate" name="iview布局设计-子表模板" desc="当业务对象配置过 布局设计后、会使用该模板-子表" type="subTableFormOverallArrangement" dir="pc_iview"/>
+	<template key="iviewFormOverallArrangementSubOneline" name="iview布局设计-单行子表模板" desc="当业务对象配置过 布局设计后、会使用该模板-子表" type="subTableFormOverallArrangement" dir="pc_iview"/>
+
+	<!-- 主表的模板 -->
+	<template key="iviewMainOneColumn" name="iview单列模板(Table)" desc="单列模板" type="main" dir="pc_iview"/>
+	<template key="iviewMainTwoColumn" name="iview两列模板(Table)" desc="两列模板" type="main" dir="pc_iview"/>
+	<template key="iviewMainThreeColumn" name="iview三列模板(Table)" desc="三列模板" type="main" dir="pc_iview"/>
+	<template key="iviewMainFourColumn" name="iview四列模板(Table)" desc="四列模板" type="main" dir="pc_iview"/>
+	<!-- 主表 DIV 的模板 -->
+	<template key="iviewRowMainTwoColumn" name="iview两列模板(ROW)" desc="两列模板" type="main" dir="pc_iview"/>
+	<template key="iviewRowMainThreeColumn" name="iview三列模板(ROW)" desc="三列模板" type="main" dir="pc_iview"/>
+	<template key="iviewRowMainOneColumn" name="iview单列模板(ROW)" desc="单列模板" type="main" dir="pc_iview"/>
+
+	<!-- 子表的模板 -->
+	<template key="iviewSubOneColumn" name="iview子表单列模板(Table)" desc="单列模板" type="subTable" dir="pc_iview"/>
+	<template key="iviewSubTwoColumn" name="iview子表两列模板(Table)" desc="两列模板" type="subTable" dir="pc_iview"/>
+	<template key="iviewSubThreeColumn" name="iview子表三列模板(Table)" desc="三列模板" type="subTable" dir="pc_iview"/>
+	<template key="iviewSubOneline" name="iview子表单行模板(Table)" desc="单行模板，暂时不支持一对一" type="subTable" dir="pc_iview"/>
+	<!-- 子表的 DIV 模板 -->
+	<template key="iviewRowSubOneColumn" name="iview子表单列模板(ROW)" desc="单列模板" type="subTable" dir="pc_iview"/>
+	<template key="iviewRowSubTwoColumn" name="iview子表两列模板(ROW)" desc="两列模板" type="subTable" dir="pc_iview"/>
+	<template key="iviewRowSubThreeColumn" name="iview子表三列模板(ROW)" desc="三列模板" type="subTable" dir="pc_iview"/>
+
+</templates>

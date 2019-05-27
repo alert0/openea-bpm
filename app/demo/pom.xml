@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>demo</artifactId>
+    <groupId>org.openbpm.demo</groupId>
+    <packaging>pom</packaging>
+    <name>demo</name>
+    <version>0.0.1</version>
+    <description>案例模块</description>
+	
+	 <parent>
+        <groupId>org.openbpm.bpm</groupId>
+        <artifactId>bpm-pom</artifactId>
+        <version>3.2.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+	
+	 <properties>
+        <agilebpm.version>3.2.0</agilebpm.version>
+    </properties>
+	 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+	            <groupId>org.openbpm.demo</groupId>
+	            <artifactId>demo-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+	            <groupId>org.openbpm.demo</groupId>
+	            <artifactId>demo-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		
+			<dependency>
+	            <groupId>org.openbpm.bpm</groupId>
+	            <artifactId>base-rest</artifactId>
+	            <version>${agilebpm.version}</version>
+	        </dependency>
+	        
+	        <dependency>
+	            <groupId>org.openbpm.bpm</groupId>
+	            <artifactId>sys-api</artifactId>
+	            <version>${agilebpm.version}</version>
+	        </dependency>
+	        
+	         <dependency>
+	            <groupId>org.openbpm.bpm</groupId>
+	            <artifactId>base-api</artifactId>
+	            <version>${agilebpm.version}</version>
+	        </dependency>
+	        
+		</dependencies>
+	</dependencyManagement>
+	
+    <modules>
+        <module>demo-api</module>
+        <module>demo-core</module>
+    </modules>
+</project>

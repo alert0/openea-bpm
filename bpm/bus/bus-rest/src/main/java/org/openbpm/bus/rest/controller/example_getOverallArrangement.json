@@ -1,0 +1,768 @@
+{
+  "code": "200",
+  "data": {
+    "tabList": [
+      {
+        "groupList": [
+          {
+            "columnList": [
+              {
+                "tableKey": "reimburseApply",
+                "comment": "报销单号",
+                "id": "404405714958942209",
+                "row": 2,
+                "$$hashKey": "005",
+                "key": "bxdh"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "单据数量",
+                "id": "404405714961301505",
+                "row": 2,
+                "$$hashKey": "006",
+                "key": "djsl"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "报销类型",
+                "id": "404405714963922945",
+                "row": 2,
+                "$$hashKey": "007",
+                "key": "bxlx"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "差旅单号",
+                "id": "404405714966282241",
+                "row": 2,
+                "$$hashKey": "008",
+                "key": "cldh"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "报销部门",
+                "id": "404405714968641537",
+                "row": 2,
+                "$$hashKey": "009",
+                "key": "bxbm"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "商机",
+                "id": "404405714971262977",
+                "row": 2,
+                "$$hashKey": "00A",
+                "key": "sj"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "报销人",
+                "id": "404405714973622273",
+                "row": 2,
+                "$$hashKey": "00B",
+                "key": "bxr"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "付款单位",
+                "id": "404405714975981569",
+                "row": 2,
+                "$$hashKey": "00C",
+                "key": "fkdw"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "报销人职级",
+                "id": "404405714978340865",
+                "row": 2,
+                "$$hashKey": "00D",
+                "key": "bxrzj"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "是否为项目报销",
+                "id": "404405714980700161",
+                "row": 2,
+                "$$hashKey": "00E",
+                "key": "sfwxmbx"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "报销单类型",
+                "id": "404405714983321601",
+                "row": 2,
+                "$$hashKey": "00F",
+                "key": "bxdlx"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "是否为专项费用",
+                "id": "404405714985680897",
+                "row": 2,
+                "$$hashKey": "00G",
+                "key": "sfwzxfy"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "专项费用申请单",
+                "id": "404405714988040193",
+                "row": 2,
+                "$$hashKey": "00H",
+                "key": "zxfysqd"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "是否对公付款",
+                "id": "404405714990399489",
+                "row": 2,
+                "$$hashKey": "00I",
+                "key": "sfdgfk"
+              },
+              {
+                "tableKey": "reimburseApply",
+                "comment": "是否已取得增值税发票",
+                "id": "404405714992758785",
+                "row": 2,
+                "$$hashKey": "00J",
+                "key": "sfyqdzzsfp"
+              }
+            ],
+            "comment": "报销申请信息",
+            "$$hashKey": "003",
+            "key": "reimburseApply"
+          }
+        ],
+        "comment": "报销申请信息",
+        "$$hashKey": "02Q"
+      },
+      {
+        "groupList": [
+          {
+            "columnList": [
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "项目组",
+                "id": "404405858680700929",
+                "row": 2,
+                "$$hashKey": "012",
+                "key": "xmz"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "报销金额",
+                "id": "404405858683322369",
+                "row": 2,
+                "$$hashKey": "013",
+                "key": "bxje"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "起始日期",
+                "id": "404405858685681665",
+                "row": 2,
+                "$$hashKey": "014",
+                "key": "qsrq"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "结束日期",
+                "id": "404405858688303105",
+                "row": 2,
+                "$$hashKey": "015",
+                "key": "jsrq"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "出差原因",
+                "id": "404405858690662401",
+                "row": 2,
+                "$$hashKey": "016",
+                "key": "ccyy"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计天数",
+                "id": "404405858693283841",
+                "row": 2,
+                "$$hashKey": "017",
+                "key": "hjts"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计计票费",
+                "id": "404405858695643137",
+                "row": 2,
+                "$$hashKey": "018",
+                "key": "hjjpf"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计车船费",
+                "id": "404405858698264577",
+                "row": 2,
+                "$$hashKey": "019",
+                "key": "hjccf"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计市内交通",
+                "id": "404405858700886017",
+                "row": 2,
+                "$$hashKey": "01A",
+                "key": "hjsnjt"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计住宿费",
+                "id": "404405858703245313",
+                "row": 2,
+                "$$hashKey": "01B",
+                "key": "hjzsf"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计出差补助",
+                "id": "404405858705866753",
+                "row": 2,
+                "$$hashKey": "01C",
+                "key": "hjccbz"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计住宿节约补助",
+                "id": "404405858708226049",
+                "row": 2,
+                "$$hashKey": "01D",
+                "key": "hjzsjybz"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计其他",
+                "id": "404405858710847489",
+                "row": 2,
+                "$$hashKey": "01E",
+                "key": "hjqt"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "合计增值税进项税额",
+                "id": "404405858713468929",
+                "row": 2,
+                "$$hashKey": "01F",
+                "key": "hjzzsjxse"
+              },
+              {
+                "tableKey": "reimburseDetail",
+                "comment": "总计",
+                "id": "404405858716090369",
+                "row": 2,
+                "$$hashKey": "01G",
+                "key": "zj"
+              }
+            ],
+            "comment": "报销明细",
+            "$$hashKey": "010",
+            "key": "reimburseDetail"
+          },
+          {
+            "columnList": [
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "起始日期",
+                "id": "404405939583582209",
+                "row": 2,
+                "$$hashKey": "01Y",
+                "key": "qsrq"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "截止日期",
+                "id": "404405939586203649",
+                "row": 2,
+                "$$hashKey": "01Z",
+                "key": "jzrq"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "出发地",
+                "id": "404405939588825089",
+                "row": 2,
+                "$$hashKey": "020",
+                "key": "cfd"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "到达地",
+                "id": "404405939591184385",
+                "row": 2,
+                "$$hashKey": "021",
+                "key": "ddd"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "天数",
+                "id": "404405939593805825",
+                "row": 2,
+                "$$hashKey": "022",
+                "key": "ts"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "机票费",
+                "id": "404405939596427265",
+                "row": 2,
+                "$$hashKey": "023",
+                "key": "jpf"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "车船费",
+                "id": "404405939598786561",
+                "row": 2,
+                "$$hashKey": "024",
+                "key": "ccf"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "市内交通费",
+                "id": "404405939601408001",
+                "row": 2,
+                "$$hashKey": "025",
+                "key": "snjtf"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "住宿费",
+                "id": "404405939604029441",
+                "row": 2,
+                "$$hashKey": "026",
+                "key": "zsf"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "出差补助费",
+                "id": "404405939608485889",
+                "row": 2,
+                "$$hashKey": "027",
+                "key": "ccbzf"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "住宿节约补助",
+                "id": "404405939611107329",
+                "row": 2,
+                "$$hashKey": "028",
+                "key": "zsjybz"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "其他",
+                "id": "404405939613466625",
+                "row": 2,
+                "$$hashKey": "029",
+                "key": "qt"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "增值税进项税额",
+                "id": "404405939616088065",
+                "row": 2,
+                "$$hashKey": "02A",
+                "key": "zzsjxse"
+              },
+              {
+                "tableKey": "reimburseDetaiItem",
+                "comment": "小计",
+                "id": "404405939618709505",
+                "row": 2,
+                "$$hashKey": "02B",
+                "key": "xj"
+              }
+            ],
+            "comment": "差旅报销明细详情",
+            "$$hashKey": "01W",
+            "key": "reimburseDetaiItem"
+          }
+        ],
+        "comment": "报销明细",
+        "$$hashKey": "02S"
+      }
+    ],
+    "groupList": [
+      {
+        "columnList": [
+          {
+            "tableKey": "reimburseApply",
+            "comment": "报销单号",
+            "id": "404405714958942209",
+            "row": 2,
+            "$$hashKey": "005",
+            "key": "bxdh"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "单据数量",
+            "id": "404405714961301505",
+            "row": 2,
+            "$$hashKey": "006",
+            "key": "djsl"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "报销类型",
+            "id": "404405714963922945",
+            "row": 2,
+            "$$hashKey": "007",
+            "key": "bxlx"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "差旅单号",
+            "id": "404405714966282241",
+            "row": 2,
+            "$$hashKey": "008",
+            "key": "cldh"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "报销部门",
+            "id": "404405714968641537",
+            "row": 2,
+            "$$hashKey": "009",
+            "key": "bxbm"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "商机",
+            "id": "404405714971262977",
+            "row": 2,
+            "$$hashKey": "00A",
+            "key": "sj"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "报销人",
+            "id": "404405714973622273",
+            "row": 2,
+            "$$hashKey": "00B",
+            "key": "bxr"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "付款单位",
+            "id": "404405714975981569",
+            "row": 2,
+            "$$hashKey": "00C",
+            "key": "fkdw"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "报销人职级",
+            "id": "404405714978340865",
+            "row": 2,
+            "$$hashKey": "00D",
+            "key": "bxrzj"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "是否为项目报销",
+            "id": "404405714980700161",
+            "row": 2,
+            "$$hashKey": "00E",
+            "key": "sfwxmbx"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "报销单类型",
+            "id": "404405714983321601",
+            "row": 2,
+            "$$hashKey": "00F",
+            "key": "bxdlx"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "是否为专项费用",
+            "id": "404405714985680897",
+            "row": 2,
+            "$$hashKey": "00G",
+            "key": "sfwzxfy"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "专项费用申请单",
+            "id": "404405714988040193",
+            "row": 2,
+            "$$hashKey": "00H",
+            "key": "zxfysqd"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "是否对公付款",
+            "id": "404405714990399489",
+            "row": 2,
+            "$$hashKey": "00I",
+            "key": "sfdgfk"
+          },
+          {
+            "tableKey": "reimburseApply",
+            "comment": "是否已取得增值税发票",
+            "id": "404405714992758785",
+            "row": 2,
+            "$$hashKey": "00J",
+            "key": "sfyqdzzsfp"
+          }
+        ],
+        "comment": "报销申请信息",
+        "$$hashKey": "003",
+        "key": "reimburseApply"
+      },
+      {
+        "columnList": [
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "项目组",
+            "id": "404405858680700929",
+            "row": 2,
+            "$$hashKey": "012",
+            "key": "xmz"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "报销金额",
+            "id": "404405858683322369",
+            "row": 2,
+            "$$hashKey": "013",
+            "key": "bxje"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "起始日期",
+            "id": "404405858685681665",
+            "row": 2,
+            "$$hashKey": "014",
+            "key": "qsrq"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "结束日期",
+            "id": "404405858688303105",
+            "row": 2,
+            "$$hashKey": "015",
+            "key": "jsrq"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "出差原因",
+            "id": "404405858690662401",
+            "row": 2,
+            "$$hashKey": "016",
+            "key": "ccyy"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计天数",
+            "id": "404405858693283841",
+            "row": 2,
+            "$$hashKey": "017",
+            "key": "hjts"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计计票费",
+            "id": "404405858695643137",
+            "row": 2,
+            "$$hashKey": "018",
+            "key": "hjjpf"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计车船费",
+            "id": "404405858698264577",
+            "row": 2,
+            "$$hashKey": "019",
+            "key": "hjccf"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计市内交通",
+            "id": "404405858700886017",
+            "row": 2,
+            "$$hashKey": "01A",
+            "key": "hjsnjt"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计住宿费",
+            "id": "404405858703245313",
+            "row": 2,
+            "$$hashKey": "01B",
+            "key": "hjzsf"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计出差补助",
+            "id": "404405858705866753",
+            "row": 2,
+            "$$hashKey": "01C",
+            "key": "hjccbz"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计住宿节约补助",
+            "id": "404405858708226049",
+            "row": 2,
+            "$$hashKey": "01D",
+            "key": "hjzsjybz"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计其他",
+            "id": "404405858710847489",
+            "row": 2,
+            "$$hashKey": "01E",
+            "key": "hjqt"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "合计增值税进项税额",
+            "id": "404405858713468929",
+            "row": 2,
+            "$$hashKey": "01F",
+            "key": "hjzzsjxse"
+          },
+          {
+            "tableKey": "reimburseDetail",
+            "comment": "总计",
+            "id": "404405858716090369",
+            "row": 2,
+            "$$hashKey": "01G",
+            "key": "zj"
+          }
+        ],
+        "comment": "报销明细",
+        "$$hashKey": "010",
+        "key": "reimburseDetail"
+      },
+      {
+        "columnList": [
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "起始日期",
+            "id": "404405939583582209",
+            "row": 2,
+            "$$hashKey": "01Y",
+            "key": "qsrq"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "截止日期",
+            "id": "404405939586203649",
+            "row": 2,
+            "$$hashKey": "01Z",
+            "key": "jzrq"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "出发地",
+            "id": "404405939588825089",
+            "row": 2,
+            "$$hashKey": "020",
+            "key": "cfd"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "到达地",
+            "id": "404405939591184385",
+            "row": 2,
+            "$$hashKey": "021",
+            "key": "ddd"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "天数",
+            "id": "404405939593805825",
+            "row": 2,
+            "$$hashKey": "022",
+            "key": "ts"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "机票费",
+            "id": "404405939596427265",
+            "row": 2,
+            "$$hashKey": "023",
+            "key": "jpf"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "车船费",
+            "id": "404405939598786561",
+            "row": 2,
+            "$$hashKey": "024",
+            "key": "ccf"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "市内交通费",
+            "id": "404405939601408001",
+            "row": 2,
+            "$$hashKey": "025",
+            "key": "snjtf"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "住宿费",
+            "id": "404405939604029441",
+            "row": 2,
+            "$$hashKey": "026",
+            "key": "zsf"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "出差补助费",
+            "id": "404405939608485889",
+            "row": 2,
+            "$$hashKey": "027",
+            "key": "ccbzf"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "住宿节约补助",
+            "id": "404405939611107329",
+            "row": 2,
+            "$$hashKey": "028",
+            "key": "zsjybz"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "其他",
+            "id": "404405939613466625",
+            "row": 2,
+            "$$hashKey": "029",
+            "key": "qt"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "增值税进项税额",
+            "id": "404405939616088065",
+            "row": 2,
+            "$$hashKey": "02A",
+            "key": "zzsjxse"
+          },
+          {
+            "tableKey": "reimburseDetaiItem",
+            "comment": "小计",
+            "id": "404405939618709505",
+            "row": 2,
+            "$$hashKey": "02B",
+            "key": "xj"
+          }
+        ],
+        "comment": "差旅报销明细详情",
+        "$$hashKey": "01W",
+        "key": "reimburseDetaiItem"
+      }
+    ]
+  },
+  "isOk": true
+}

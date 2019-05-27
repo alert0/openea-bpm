@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 10
+      author: OpenBPM
+      preConditions:
+        - dbms:
+            type: mysql
+      changes:
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/mysql/create/1.org.create.sql
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/mysql/create/2.sys.create.sql
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/mysql/create/3.bpm.create.sql
+  - changeSet:
+      id: 20
+      author: OpenBPM
+      preConditions:
+        - dbms:
+            type: mysql
+      changes:
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/mysql/dataInit/1.org.init.sql
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/mysql/dataInit/2.sys.init.sql
+        - sqlFile:
+            encoding: utf8
+            path: classpath:db/changelog/mysql/dataInit/3.bpm.init.sql

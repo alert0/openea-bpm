@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.openbpm.bpm.core.dao.BpmTaskDao">
+	<resultMap id="BpmTask" type="org.openbpm.bpm.core.model.BpmTask">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="name" column="name_" jdbcType="VARCHAR"/>
+		<result property="subject" column="subject_" jdbcType="VARCHAR"/>
+		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
+		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
+		<result property="nodeId" column="node_id_" jdbcType="VARCHAR"/>
+		<result property="defId" column="def_id_" jdbcType="VARCHAR"/>
+		<result property="assigneeId" column="assignee_id_" jdbcType="VARCHAR"/>
+		<result property="assigneeNames" column="assignee_names_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="priority" column="priority_" jdbcType="NUMERIC"/>
+		<result property="dueTime" column="due_time_" jdbcType="TIMESTAMP"/>
+		<result property="taskType" column="task_type_" jdbcType="VARCHAR"/>
+		<result property="parentId" column="parent_id_" jdbcType="VARCHAR"/>
+		<result property="actInstId" column="act_inst_id_" jdbcType="VARCHAR"/>
+		<result property="actExecutionId" column="act_execution_id_" jdbcType="VARCHAR"/>
+		<result property="typeId" column="type_id_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="supportMobile" column="support_mobile_" jdbcType="NUMERIC"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="org.openbpm.bpm.core.model.BpmTask">
+		INSERT INTO bpm_task
+		(id_,name_,subject_,inst_id_,task_id_,node_id_,def_id_,assignee_id_,assignee_names_,status_,priority_,due_time_,task_type_,parent_id_,act_inst_id_,act_execution_id_,type_id_,create_time_,create_by_,support_mobile_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{instId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{nodeId,jdbcType=VARCHAR}, #{defId,jdbcType=VARCHAR}, #{assigneeId,jdbcType=VARCHAR}, #{assigneeNames,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{priority,jdbcType=NUMERIC}, #{dueTime,jdbcType=TIMESTAMP}, #{taskType,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{actInstId,jdbcType=VARCHAR}, #{actExecutionId,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{supportMobile,jdbcType=NUMERIC})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmTask">
+		SELECT * FROM bpm_task 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmTask">
+		SELECT * FROM bpm_task
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="org.openbpm.bpm.core.model.BpmTask">
+		UPDATE bpm_task SET
+		name_=#{name,jdbcType=VARCHAR},
+		subject_=#{subject,jdbcType=VARCHAR},
+		inst_id_=#{instId,jdbcType=VARCHAR},
+		task_id_=#{taskId,jdbcType=VARCHAR},
+		node_id_=#{nodeId,jdbcType=VARCHAR},
+		def_id_=#{defId,jdbcType=VARCHAR},
+		assignee_id_=#{assigneeId,jdbcType=VARCHAR},
+		assignee_names_=#{assigneeNames,jdbcType=VARCHAR},
+		status_=#{status,jdbcType=VARCHAR},
+		priority_=#{priority,jdbcType=NUMERIC},
+		due_time_=#{dueTime,jdbcType=TIMESTAMP},
+		task_type_=#{taskType,jdbcType=VARCHAR},
+		parent_id_=#{parentId,jdbcType=VARCHAR},
+		act_inst_id_=#{actInstId,jdbcType=VARCHAR},
+		act_execution_id_=#{actExecutionId,jdbcType=VARCHAR},
+		type_id_=#{typeId,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		support_mobile_=#{supportMobile,jdbcType=NUMERIC}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_task 
+		WHERE
+		id_=#{id}
+	</delete>
+	
+	<delete id="removeByInstId" parameterType="java.lang.String">
+		DELETE FROM bpm_task 
+		WHERE
+		inst_id_=#{instId}
+	</delete>
+	
+	<select id="getByInstIdNodeId"   parameterType="java.util.Map" resultMap="BpmTask">
+		SELECT * FROM bpm_task 
+		WHERE  inst_id_=#{instId}
+		<if test="nodeId!=null">
+		and node_id_ = #{nodeId}
+		</if>
+	</select>
+	
+	
+	<select id="getTodoList" parameterType="java.util.Map" resultMap="BpmTask">
+		SELECT DISTINCT task.* FROM bpm_task task LEFT JOIN bpm_task_identitylink link on task.id_ = link.task_id_
+		<if test="supportMobile">
+			inner join bpm_definition def on task.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and ((task.assignee_id_ = '0' and link.permission_code_ in  <foreach collection="userRights" index="index" item="permissionCode" open="(" separator="," close=")">#{permissionCode}</foreach> )
+					or task.assignee_id_ = #{userId})
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY priority_ DESC, task.id_ DESC
+		</if>
+	</select>
+	
+</mapper>

@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  bpm-boot-dev:
+    #image: bpm-boot
+    build:
+      context: ./bpm-boot
+      dockerfile: Dockerfile-dev
+    container_name: bpm-boot
+    environment:
+      redis_host: redis
+      jdbc_url: jdbc:mysql://mysql:3306/eap_bpm?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    ports:
+      - 7080:8080
+    depends_on:
+      - bpm-mysql
+      - bpm-redis
+    links:
+      - bpm-mysql:mysql
+      - bpm-redis:redis
+  bpm-mysql:
+    image: mysql/mysql-server:5.7
+    container_name: bpm-mysql
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: eap_bpm
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --max_allowed_packet=128M
+      --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    volumes:
+      - bpm-mysql-data:/var/lib/mysql
+  bpm-redis:
+    image: redis:5
+    volumes:
+      - bpm-redis-data:/data
+volumes:
+  bpm-mysql-data:
+  bpm-redis-data:

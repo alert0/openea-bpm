@@ -1,13 +1,9 @@
 # Open BPM 
 ## 概述
-基于开源工作流引擎的工作流套装，整合各种开源项目或组件，实现企业应用快速集成工作流能力。
+基于开源工作流引擎的BPM套装，整合各种开源项目或组件，实现企业应用快速集成工作流能力。
 
 
 ## solution 解决方案
-
-* bpm-web
-
-传统web方式嵌入BPM工作流
 
 * bpm-boot
 
@@ -38,49 +34,42 @@ ui包含web前端explorer-ng和web打包工程以及mobile-vue 移动端APP
 BPM相关的app和demo
 
 # getting start
-## 准备工作
-数据库mysql
+## spring boot 启动
 
-参见脚本 ./db/mysql
+### 准备
+
+数据库mysql(5.6或以上)
+
+修改数据库配置文件 bpm-boot/bpm-boot/src/main/resources/application.yml
 
 缓存服务器redis
 
-## 开发环境启动
-
-### 选项1 -- web 启动
-传统web方式
-``` bash
-cd openea-bpm
-mvn clean install
-cd ./bpm-web/bpm-web
-mvn jetty:run
-```
-
-### 选项2 -- spring boot启动
+### spring boot启动
 ``` bash
 cd openea-bpm
 mvn clean install
 cd ./bpm-boot/bpm-boot
 mvn spring-boot:run
 ```
+http://localhost:8080/
 
-### 移动app启动
+管理用户admin/admin
 
-ui/mobile-vue
+## docker 启动
 
+### 安装docker环境
+需要安装docker环境
+
+### docker 启动
 ``` bash
-cd ui/mobile-vue
-
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+cd openea-bpm
+mvn clean install
+cd ./bpm-boot
+docker-compose up
 ```
-后端项目请求地址的配置 在 baseService.js  __ctx
+http://localhost:7080/
+
+管理用户admin/admin
 
 # 参考项目 refer
 参考众多开源项目实现，一并表示感谢，部分项目列出如下：

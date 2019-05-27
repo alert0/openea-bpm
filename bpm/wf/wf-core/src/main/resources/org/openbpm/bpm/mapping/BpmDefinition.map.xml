@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.openbpm.bpm.core.dao.BpmDefinitionDao">
+	<resultMap id="BpmDefinition" type="org.openbpm.bpm.core.model.BpmDefinition">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="name" column="name_" jdbcType="VARCHAR"/>
+		<result property="key" column="key_" jdbcType="VARCHAR"/>
+		<result property="desc" column="desc_" jdbcType="VARCHAR"/>
+		<result property="typeId" column="type_id_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="actDefId" column="act_def_id_" jdbcType="VARCHAR"/>
+		<result property="actModelId" column="act_model_id_" jdbcType="VARCHAR"/>
+		<result property="actDeployId" column="act_deploy_id_" jdbcType="VARCHAR"/>
+		<result property="version" column="version_" jdbcType="NUMERIC"/>
+		<result property="mainDefId" column="main_def_id_" jdbcType="VARCHAR"/>
+		<result property="isMain" column="is_main_" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="createOrgId" column="create_org_id_" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="supportMobile" column="support_mobile_" jdbcType="NUMERIC"/>
+		<result property="defSetting" column="def_setting_" jdbcType="CLOB"/>
+		<result property="rev" column="rev_" jdbcType="NUMERIC"/>
+	</resultMap>
+	
+	<sql id="columns">
+		id_,name_,def_setting_,key_,desc_,type_id_,status_,act_def_id_,act_model_id_,act_deploy_id_,version_,main_def_id_,is_main_,create_by_,create_time_,create_org_id_,update_by_,update_time_,support_mobile_,rev_
+	</sql>
+	
+	<sql id="columnsWithoutSettings">
+		id_,name_,key_,desc_,type_id_,status_,act_def_id_,act_model_id_,act_deploy_id_,version_,main_def_id_,is_main_,create_by_,create_time_,create_org_id_,update_by_,update_time_,support_mobile_,rev_
+	</sql>
+	
+	<insert id="create" parameterType="org.openbpm.bpm.core.model.BpmDefinition">
+		INSERT INTO bpm_definition
+		(id_,name_,key_,desc_,type_id_,status_,act_def_id_,act_model_id_,act_deploy_id_,version_,main_def_id_,is_main_,create_by_,create_time_,create_org_id_,update_by_,update_time_,support_mobile_,def_setting_,rev_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{actDefId,jdbcType=VARCHAR}, #{actModelId,jdbcType=VARCHAR}, #{actDeployId,jdbcType=VARCHAR}, #{version,jdbcType=NUMERIC}, #{mainDefId,jdbcType=VARCHAR}, #{isMain,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createOrgId,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{supportMobile,jdbcType=NUMERIC}, #{defSetting,jdbcType=CLOB}, #{rev,jdbcType=NUMERIC})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT * FROM bpm_definition 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmDefinition">
+		SELECT <include refid="columnsWithoutSettings"/> FROM bpm_definition
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="org.openbpm.bpm.core.model.BpmDefinition">
+		UPDATE bpm_definition SET
+		name_=#{name,jdbcType=VARCHAR},
+		key_=#{key,jdbcType=VARCHAR},
+		desc_=#{desc,jdbcType=VARCHAR},
+		type_id_=#{typeId,jdbcType=VARCHAR},
+		status_=#{status,jdbcType=VARCHAR},
+		act_def_id_=#{actDefId,jdbcType=VARCHAR},
+		act_model_id_=#{actModelId,jdbcType=VARCHAR},
+		act_deploy_id_=#{actDeployId,jdbcType=VARCHAR},
+		version_=#{version,jdbcType=NUMERIC},
+		main_def_id_=#{mainDefId,jdbcType=VARCHAR},
+		is_main_=#{isMain,jdbcType=VARCHAR},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		create_org_id_=#{createOrgId,jdbcType=VARCHAR},
+		update_by_=#{updateBy,jdbcType=VARCHAR},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		support_mobile_=#{supportMobile,jdbcType=NUMERIC},
+		def_setting_=#{defSetting,jdbcType=CLOB},
+		rev_=#{rev,jdbcType=NUMERIC}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_definition 
+		WHERE
+		id_=#{id}
+	</delete>
+	
+	<select id="getMainByDefKey"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/> FROM bpm_definition 
+		WHERE  key_=#{key} and IS_MAIN_='Y'
+	</select>
+	
+	<select id="getDefByActModelId"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/> FROM bpm_definition 
+		WHERE  act_model_id_=#{actModelId} 
+	</select>
+	
+	<select id="getByActDefId"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/> FROM bpm_definition 
+		WHERE  act_model_id_=#{actModelId}
+	</select>
+	
+	
+	<select id="getByKey"  parameterType="java.lang.String" resultMap="BpmDefinition">
+		SELECT <include refid="columns"/>
+	    FROM bpm_definition 
+		WHERE 
+		key_=#{key}
+	</select>
+	
+	<update id="updateActResourceEntity" parameterType="java.util.Map"> 
+		 update ACT_GE_BYTEARRAY 
+		    set
+		      BYTES_ = #{bpmnBytes, jdbcType=BLOB}
+		    where DEPLOYMENT_ID_ = #{deploymentId} and NAME_=#{resName}
+	</update>
+	
+	<select id="getMyDefinitionList" parameterType="java.util.Map" resultMap="BpmDefinition">
+		SELECT DISTINCT <include refid="columnsWithoutSettings"/> FROM bpm_definition ${rightsSql}
+		<where>
+			<if test="whereSql!=null">
+				 ${whereSql}
+			</if>
+			and is_main_ = 'Y'
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+</mapper>

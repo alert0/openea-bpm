@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.openbpm.bpm</groupId>
+        <artifactId>bpm-pom</artifactId>
+        <version>3.2.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>bpm</artifactId>
+    <packaging>pom</packaging>
+    <name>bpm</name>
+    <description>流程及表单模块</description>
+
+    <modules>
+        <module>bus</module>
+        <module>form</module>
+        <module>wf</module>
+    </modules>
+
+    <properties>
+        <support.version>3.2.0</support.version>
+        <bpm.version>3.2.0</bpm.version>
+        <wf.version>3.2.1</wf.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>bus-api</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>bus-core</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>bus-rest</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>form-api</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>form-core</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>form-rest</artifactId>
+                <version>${bpm.version}</version>
+            </dependency>
+  
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>auth</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>org-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>sys-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-api</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-core</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-db</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openbpm.bpm</groupId>
+                <artifactId>base-rest</artifactId>
+                <version>${support.version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+</project>

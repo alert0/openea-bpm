@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.openbpm.bpm.core.dao.BpmTaskStackDao">
+	<resultMap id="BpmTaskStack" type="org.openbpm.bpm.core.model.BpmTaskStack">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="taskId" column="task_id_" jdbcType="VARCHAR"/>
+		<result property="instId" column="inst_id_" jdbcType="VARCHAR"/>
+		<result property="parentId" column="parent_id_" jdbcType="VARCHAR"/>
+		<result property="nodeId" column="node_id_" jdbcType="VARCHAR"/>
+		<result property="nodeName" column="node_name_" jdbcType="VARCHAR"/>
+		<result property="startTime" column="start_time_" jdbcType="TIMESTAMP"/>
+		<result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+		<result property="isMulitiTask" column="is_muliti_task_" jdbcType="NUMERIC"/>
+		<result property="nodeType" column="node_type_" jdbcType="VARCHAR"/>
+		<result property="actionName" column="action_name_" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="org.openbpm.bpm.core.model.BpmTaskStack">
+		INSERT INTO bpm_task_stack
+		(id_,task_id_,inst_id_,parent_id_,node_id_,node_name_,start_time_,end_time,is_muliti_task_,node_type_,action_name_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{instId,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{nodeId,jdbcType=VARCHAR}, #{nodeName,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{isMulitiTask,jdbcType=NUMERIC}, #{nodeType,jdbcType=VARCHAR}, #{actionName,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmTaskStack">
+		SELECT * FROM bpm_task_stack 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmTaskStack">
+		SELECT * FROM bpm_task_stack
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="org.openbpm.bpm.core.model.BpmTaskStack">
+		UPDATE bpm_task_stack SET
+		task_id_=#{taskId,jdbcType=VARCHAR},
+		inst_id_=#{instId,jdbcType=VARCHAR},
+		parent_id_=#{parentId,jdbcType=VARCHAR},
+		node_id_=#{nodeId,jdbcType=VARCHAR},
+		node_name_=#{nodeName,jdbcType=VARCHAR},
+		start_time_=#{startTime,jdbcType=TIMESTAMP},
+		end_time=#{endTime,jdbcType=TIMESTAMP},
+		is_muliti_task_=#{isMulitiTask,jdbcType=NUMERIC},
+		node_type_=#{nodeType,jdbcType=VARCHAR},
+		action_name_=#{actionName,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_task_stack 
+		WHERE
+		id_=#{id}
+	</delete>
+	
+	<select id="getByTaskId"   parameterType="java.lang.String" resultMap="BpmTaskStack">
+		SELECT * FROM bpm_task_stack 
+		WHERE 
+		task_id_=#{taskId}
+	</select>
+	
+	<select id="getByInstanceId"   parameterType="java.lang.String" resultMap="BpmTaskStack">
+		SELECT * FROM bpm_task_stack 
+		WHERE 
+		inst_id_=#{instanceId}
+	</select>
+	
+	<delete id="removeByInstanceId" parameterType="java.lang.String">
+		DELETE FROM bpm_task_stack 
+		WHERE
+		id_=#{instId}
+	</delete>
+	
+</mapper>

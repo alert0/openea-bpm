@@ -1,0 +1,1 @@
+providers: bpm-wf-autoconfigure,wf-rest

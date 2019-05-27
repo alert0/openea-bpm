@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.openbpm.bpm.core.dao.BpmInstanceDao">
+	<resultMap id="BpmInstance" type="org.openbpm.bpm.core.model.BpmInstance">
+		<id property="id" column="id_" jdbcType="VARCHAR"/>
+		<result property="subject" column="subject_" jdbcType="VARCHAR"/>
+		<result property="defId" column="def_id_" jdbcType="VARCHAR"/>
+		<result property="actDefId" column="act_def_id_" jdbcType="VARCHAR"/>
+		<result property="defKey" column="def_key_" jdbcType="VARCHAR"/>
+		<result property="defName" column="def_name_" jdbcType="VARCHAR"/>
+		<result property="bizKey" column="biz_key_" jdbcType="VARCHAR"/>
+		<result property="status" column="status_" jdbcType="VARCHAR"/>
+		<result property="endTime" column="end_time_" jdbcType="TIMESTAMP"/>
+		<result property="duration" column="duration_" jdbcType="NUMERIC"/>
+		<result property="typeId" column="type_id_" jdbcType="VARCHAR"/>
+		<result property="actInstId" column="act_inst_id_" jdbcType="VARCHAR"/>
+		<result property="createBy" column="create_by_" jdbcType="VARCHAR"/>
+		<result property="creator" column="creator_" jdbcType="VARCHAR"/>
+		<result property="createTime" column="create_time_" jdbcType="TIMESTAMP"/>
+		<result property="createOrgId" column="create_org_id_" jdbcType="VARCHAR"/>
+		<result property="updateBy" column="update_by_" jdbcType="VARCHAR"/>
+		<result property="updateTime" column="update_time_" jdbcType="TIMESTAMP"/>
+		<result property="isFormmal" column="is_formmal_" jdbcType="VARCHAR"/>
+		<result property="parentInstId" column="parent_inst_id_" jdbcType="VARCHAR"/>
+		<result property="isForbidden" column="is_forbidden_" jdbcType="NUMERIC"/>
+		<result property="dataMode" column="data_mode_" jdbcType="VARCHAR"/>
+		<result property="supportMobile" column="support_mobile_" jdbcType="NUMERIC"/>
+		<result property="superNodeId" column="super_node_id_" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<insert id="create" parameterType="org.openbpm.bpm.core.model.BpmInstance">
+		INSERT INTO bpm_instance
+		(id_,subject_,def_id_,act_def_id_,def_key_,def_name_,biz_key_,status_,end_time_,duration_,type_id_,act_inst_id_,create_by_,creator_,create_time_,create_org_id_,update_by_,update_time_,is_formmal_,parent_inst_id_,is_forbidden_,data_mode_,support_mobile_,super_node_id_)
+		VALUES 
+		(#{id,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{defId,jdbcType=VARCHAR}, #{actDefId,jdbcType=VARCHAR}, #{defKey,jdbcType=VARCHAR}, #{defName,jdbcType=VARCHAR}, #{bizKey,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{endTime,jdbcType=TIMESTAMP}, #{duration,jdbcType=NUMERIC}, #{typeId,jdbcType=VARCHAR}, #{actInstId,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createOrgId,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{isFormmal,jdbcType=VARCHAR}, #{parentInstId,jdbcType=VARCHAR}, #{isForbidden,jdbcType=NUMERIC}, #{dataMode,jdbcType=VARCHAR}, #{supportMobile,jdbcType=NUMERIC}, #{superNodeId,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="get"   parameterType="java.lang.String" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance 
+		WHERE 
+		id_=#{id}
+	</select>
+	
+	<select id="getByPId"  parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance 
+		WHERE 
+		parent_inst_id_=#{parentInstId}
+	</select>
+	
+	<select id="getByActInstId"  parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance 
+		WHERE 
+		act_inst_id_=#{actInstId}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY id_ DESC
+		</if>
+	</select>
+	
+	<update id="update" parameterType="org.openbpm.bpm.core.model.BpmInstance">
+		UPDATE bpm_instance SET
+		subject_=#{subject,jdbcType=VARCHAR},
+		def_id_=#{defId,jdbcType=VARCHAR},
+		act_def_id_=#{actDefId,jdbcType=VARCHAR},
+		def_key_=#{defKey,jdbcType=VARCHAR},
+		def_name_=#{defName,jdbcType=VARCHAR},
+		biz_key_=#{bizKey,jdbcType=VARCHAR},
+		status_=#{status,jdbcType=VARCHAR},
+		end_time_=#{endTime,jdbcType=TIMESTAMP},
+		duration_=#{duration,jdbcType=NUMERIC},
+		type_id_=#{typeId,jdbcType=VARCHAR},
+		act_inst_id_=#{actInstId,jdbcType=VARCHAR},
+		create_by_=#{createBy,jdbcType=VARCHAR},
+		creator_=#{creator,jdbcType=VARCHAR},
+		create_time_=#{createTime,jdbcType=TIMESTAMP},
+		create_org_id_=#{createOrgId,jdbcType=VARCHAR},
+		update_by_=#{updateBy,jdbcType=VARCHAR},
+		update_time_=#{updateTime,jdbcType=TIMESTAMP},
+		is_formmal_=#{isFormmal,jdbcType=VARCHAR},
+		parent_inst_id_=#{parentInstId,jdbcType=VARCHAR},
+		is_forbidden_=#{isForbidden,jdbcType=NUMERIC},
+		data_mode_=#{dataMode,jdbcType=VARCHAR},
+		support_mobile_=#{supportMobile,jdbcType=NUMERIC},
+		super_node_id_=#{superNodeId,jdbcType=VARCHAR}
+		WHERE
+		id_=#{id}
+	</update>
+	
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM bpm_instance 
+		WHERE
+		id_=#{id}
+	</delete>
+	
+	<select id="getApplyList" parameterType="java.util.Map" resultMap="BpmInstance">
+		SELECT * FROM bpm_instance inst
+		<if test="supportMobile">
+			inner join bpm_definition def on inst.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		<where>
+			<if test="whereSql!=null">
+				${whereSql}
+			</if>
+			and inst.create_by_ = #{userId}
+		</where>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY inst.id_ DESC
+		</if>
+	</select>
+	
+	<select id="getApproveHistoryList" parameterType="java.util.Map" resultType="org.openbpm.bpm.core.model.BpmTaskApprove">
+		select inst.id_ id,inst.subject_ subject,inst.def_name_ defName,inst.status_ status,inst.creator_ creator,inst.create_time_ createTime,end_time_ endTime,duration_ duration,inst.type_id_ typeId,
+		o.task_name_ nodeName,o.task_key_ nodeId,o.approve_time_ approveTime,o.status_ approveStatus,o.dur_ms_ durMs
+		from bpm_task_opinion o INNER JOIN bpm_instance inst on o.inst_id_ = inst.id_ 
+		<if test="supportMobile">
+			inner join bpm_definition def on inst.def_id_ = def.id_ and def.support_mobile_ = '1'
+		</if>
+		where o.status_ not in ('start','skip','end') and o.approver_ = #{approver}
+		<if test="whereSql!=null">
+			and ${whereSql}
+		</if>
+		<if test="orderBySql!=null">
+			ORDER BY ${orderBySql}
+		</if>
+		<if test="orderBySql==null">
+			ORDER BY o.id_ DESC
+		</if>
+	</select>
+</mapper>
