@@ -1,5 +1,7 @@
 server:
   port: ${port:8080}
+  servlet:
+    context: /
 
 spring:
   datasource:
@@ -63,6 +65,6 @@ ab:
     message-queue-type: synchronous
 
 
-## 上传配置 db 存数据库 ，具体请看 IUploader 实现类
+## 上传配置 mysql 存数据库 ，具体请看 IUploader 实现类
 uploader:
-  default: db
+  default: mysql
